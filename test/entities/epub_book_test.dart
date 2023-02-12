@@ -11,7 +11,7 @@ main() async {
     ..AuthorList = ["orthros"]
     ..Chapters = [new EpubChapter()]
     ..Content = new EpubContent()
-    ..CoverImage = Image(100, 100)
+    ..CoverImage = Image(width: 100, height: 100)
     ..Schema = new EpubSchema()
     ..Title = "A Dissertation on Epubs";
 
@@ -23,7 +23,7 @@ main() async {
       ..AuthorList = ["orthros"]
       ..Chapters = [new EpubChapter()]
       ..Content = new EpubContent()
-      ..CoverImage = Image(100, 100)
+      ..CoverImage = Image(width: 100, height: 100)
       ..Schema = new EpubSchema()
       ..Title = "A Dissertation on Epubs";
   });
@@ -69,7 +69,7 @@ main() async {
       });
 
       test("is false when CoverImage changes", () async {
-        testBook.CoverImage = new Image(200, 200);
+        testBook.CoverImage = new Image(width: 200, height: 200);
         expect(testBook, isNot(reference));
       });
 
@@ -126,7 +126,7 @@ main() async {
       });
 
       test("is false when CoverImage changes", () async {
-        testBook.CoverImage = new Image(200, 200);
+        testBook.CoverImage = new Image(width: 200, height: 200);
         expect(testBook.hashCode, isNot(reference.hashCode));
       });
 
