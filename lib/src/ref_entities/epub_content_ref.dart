@@ -6,33 +6,37 @@ import 'epub_content_file_ref.dart';
 import 'epub_text_content_file_ref.dart';
 
 class EpubContentRef {
-  Map<String, EpubTextContentFileRef>? Html;
-  Map<String, EpubTextContentFileRef>? Css;
-  Map<String, EpubByteContentFileRef>? Images;
-  Map<String, EpubByteContentFileRef>? Fonts;
-  Map<String, EpubContentFileRef>? AllFiles;
+  final Map<String, EpubTextContentFileRef> Html;
+  final Map<String, EpubTextContentFileRef> Css;
+  final Map<String, EpubByteContentFileRef> Images;
+  final Map<String, EpubByteContentFileRef> Fonts;
+  final Map<String, EpubContentFileRef> AllFiles;
 
-  EpubContentRef() {
-    Html = <String, EpubTextContentFileRef>{};
-    Css = <String, EpubTextContentFileRef>{};
-    Images = <String, EpubByteContentFileRef>{};
-    Fonts = <String, EpubByteContentFileRef>{};
-    AllFiles = <String, EpubContentFileRef>{};
-  }
+  EpubContentRef({
+    Map<String, EpubTextContentFileRef>? html,
+    Map<String, EpubTextContentFileRef>? css,
+    Map<String, EpubByteContentFileRef>? images,
+    Map<String, EpubByteContentFileRef>? fonts,
+    Map<String, EpubContentFileRef>? allFiles,
+  })  : Html = html ?? <String, EpubTextContentFileRef>{},
+        Css = css ?? <String, EpubTextContentFileRef>{},
+        Images = images ?? <String, EpubByteContentFileRef>{},
+        Fonts = fonts ?? <String, EpubByteContentFileRef>{},
+        AllFiles = allFiles ?? <String, EpubContentFileRef>{};
 
   @override
   int get hashCode {
     var objects = [
-      ...Html!.keys.map((key) => key.hashCode),
-      ...Html!.values.map((value) => value.hashCode),
-      ...Css!.keys.map((key) => key.hashCode),
-      ...Css!.values.map((value) => value.hashCode),
-      ...Images!.keys.map((key) => key.hashCode),
-      ...Images!.values.map((value) => value.hashCode),
-      ...Fonts!.keys.map((key) => key.hashCode),
-      ...Fonts!.values.map((value) => value.hashCode),
-      ...AllFiles!.keys.map((key) => key.hashCode),
-      ...AllFiles!.values.map((value) => value.hashCode)
+      ...Html.keys.map((key) => key.hashCode),
+      ...Html.values.map((value) => value.hashCode),
+      ...Css.keys.map((key) => key.hashCode),
+      ...Css.values.map((value) => value.hashCode),
+      ...Images.keys.map((key) => key.hashCode),
+      ...Images.values.map((value) => value.hashCode),
+      ...Fonts.keys.map((key) => key.hashCode),
+      ...Fonts.values.map((value) => value.hashCode),
+      ...AllFiles.keys.map((key) => key.hashCode),
+      ...AllFiles.values.map((value) => value.hashCode)
     ];
 
     return hashObjects(objects);

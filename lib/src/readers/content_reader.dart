@@ -1,7 +1,6 @@
 import '../entities/epub_content_type.dart';
 import '../ref_entities/epub_book_ref.dart';
 import '../ref_entities/epub_byte_content_file_ref.dart';
-import '../ref_entities/epub_content_file_ref.dart';
 import '../ref_entities/epub_content_ref.dart';
 import '../ref_entities/epub_text_content_file_ref.dart';
 import '../schema/opf/epub_manifest_item.dart';
@@ -9,11 +8,6 @@ import '../schema/opf/epub_manifest_item.dart';
 class ContentReader {
   static EpubContentRef parseContentMap(EpubBookRef bookRef) {
     var result = EpubContentRef();
-    result.Html = <String, EpubTextContentFileRef>{};
-    result.Css = <String, EpubTextContentFileRef>{};
-    result.Images = <String, EpubByteContentFileRef>{};
-    result.Fonts = <String, EpubByteContentFileRef>{};
-    result.AllFiles = <String, EpubContentFileRef>{};
 
     bookRef.Schema!.Package!.Manifest!.Items!
         .forEach((EpubManifestItem manifestItem) {
@@ -37,10 +31,10 @@ class ContentReader {
           ;
           switch (contentType) {
             case EpubContentType.XHTML_1_1:
-              result.Html![fileName] = epubTextContentFile;
+              result.Html[fileName] = epubTextContentFile;
               break;
             case EpubContentType.CSS:
-              result.Css![fileName] = epubTextContentFile;
+              result.Css[fileName] = epubTextContentFile;
               break;
             case EpubContentType.DTBOOK:
             case EpubContentType.DTBOOK_NCX:
@@ -56,7 +50,7 @@ class ContentReader {
             case EpubContentType.OTHER:
               break;
           }
-          result.AllFiles![fileName] = epubTextContentFile;
+          result.AllFiles[fileName] = epubTextContentFile;
           break;
         default:
           var epubByteContentFile = EpubByteContentFileRef(bookRef);
@@ -71,11 +65,11 @@ class ContentReader {
             case EpubContentType.IMAGE_JPEG:
             case EpubContentType.IMAGE_PNG:
             case EpubContentType.IMAGE_SVG:
-              result.Images![fileName] = epubByteContentFile;
+              result.Images[fileName] = epubByteContentFile;
               break;
             case EpubContentType.FONT_TRUETYPE:
             case EpubContentType.FONT_OPENTYPE:
-              result.Fonts![fileName] = epubByteContentFile;
+              result.Fonts[fileName] = epubByteContentFile;
               break;
             case EpubContentType.CSS:
             case EpubContentType.XHTML_1_1:
@@ -87,7 +81,7 @@ class ContentReader {
             case EpubContentType.OTHER:
               break;
           }
-          result.AllFiles![fileName] = epubByteContentFile;
+          result.AllFiles[fileName] = epubByteContentFile;
           break;
       }
     });

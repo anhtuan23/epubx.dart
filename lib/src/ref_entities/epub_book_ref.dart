@@ -19,6 +19,7 @@ class EpubBookRef {
   List<String?>? AuthorList;
   EpubSchema? Schema;
   EpubContentRef? Content;
+
   EpubBookRef(Archive epubArchive) {
     _epubArchive = epubArchive;
   }

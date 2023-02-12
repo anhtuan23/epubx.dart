@@ -24,7 +24,7 @@ class EpubWriter {
         convert.utf8.encode(_container_file)));
 
     // Add all content to the archive
-    book.Content!.AllFiles!.forEach((name, file) {
+    book.Content!.AllFiles.forEach((name, file) {
       List<int>? content;
 
       if (file is EpubByteContentFile) {
