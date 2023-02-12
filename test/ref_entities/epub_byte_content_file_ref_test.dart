@@ -6,25 +6,25 @@ import 'package:epubx/src/ref_entities/epub_byte_content_file_ref.dart';
 import 'package:test/test.dart';
 
 main() async {
-  Archive arch = new Archive();
-  EpubBookRef ref = new EpubBookRef(arch);
+  Archive arch = Archive();
+  EpubBookRef ref = EpubBookRef(arch);
 
-  var reference = new EpubByteContentFileRef(ref);
+  var reference = EpubByteContentFileRef(ref);
   reference
-    ..ContentMimeType = "application/test"
-    ..ContentType = EpubContentType.OTHER
-    ..FileName = "orthrosFile";
+    ..contentMimeType = "application/test"
+    ..contentType = EpubContentType.OTHER
+    ..fileName = "orthrosFile";
 
   late EpubByteContentFileRef testFileRef;
   setUp(() async {
-    Archive arch2 = new Archive();
-    EpubBookRef ref2 = new EpubBookRef(arch2);
+    Archive arch2 = Archive();
+    EpubBookRef ref2 = EpubBookRef(arch2);
 
-    testFileRef = new EpubByteContentFileRef(ref2);
+    testFileRef = EpubByteContentFileRef(ref2);
     testFileRef
-      ..ContentMimeType = "application/test"
-      ..ContentType = EpubContentType.OTHER
-      ..FileName = "orthrosFile";
+      ..contentMimeType = "application/test"
+      ..contentType = EpubContentType.OTHER
+      ..fileName = "orthrosFile";
   });
 
   group("EpubByteContentFileRef", () {
@@ -34,17 +34,17 @@ main() async {
       });
 
       test("is false when ContentMimeType changes", () async {
-        testFileRef.ContentMimeType = "application/different";
+        testFileRef.contentMimeType = "application/different";
         expect(testFileRef, isNot(reference));
       });
 
       test("is false when ContentType changes", () async {
-        testFileRef.ContentType = EpubContentType.CSS;
+        testFileRef.contentType = EpubContentType.CSS;
         expect(testFileRef, isNot(reference));
       });
 
       test("is false when FileName changes", () async {
-        testFileRef.FileName = "a_different_file_name.txt";
+        testFileRef.fileName = "a_different_file_name.txt";
         expect(testFileRef, isNot(reference));
       });
     });
@@ -55,17 +55,17 @@ main() async {
       });
 
       test('changes when ContentMimeType changes', () async {
-        testFileRef.ContentMimeType = "application/orthros";
+        testFileRef.contentMimeType = "application/orthros";
         expect(testFileRef.hashCode, isNot(reference.hashCode));
       });
 
       test('changes when ContentType changes', () async {
-        testFileRef.ContentType = EpubContentType.CSS;
+        testFileRef.contentType = EpubContentType.CSS;
         expect(testFileRef.hashCode, isNot(reference.hashCode));
       });
 
       test('changes when FileName changes', () async {
-        testFileRef.FileName = "a_different_file_name";
+        testFileRef.fileName = "a_different_file_name";
         expect(testFileRef.hashCode, isNot(reference.hashCode));
       });
     });

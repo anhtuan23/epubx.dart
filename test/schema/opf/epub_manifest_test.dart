@@ -5,21 +5,21 @@ import 'package:epubx/src/schema/opf/epub_manifest_item.dart';
 import 'package:test/test.dart';
 
 main() async {
-  var reference = new EpubManifest();
-  reference.Items = [
-    new EpubManifestItem()
-      ..Fallback = "Some Fallback"
-      ..FallbackStyle = "A Very Stylish Fallback"
-      ..Href = "Some HREF"
-      ..Id = "Some ID"
-      ..MediaType = "MKV"
-      ..RequiredModules = "nodejs require()"
-      ..RequiredNamespace = ".NET Namespace"
+  var reference = EpubManifest();
+  reference.items = [
+    EpubManifestItem()
+      ..fallback = "Some Fallback"
+      ..fallbackStyle = "A Very Stylish Fallback"
+      ..href = "Some HREF"
+      ..id = "Some ID"
+      ..mediaType = "MKV"
+      ..requiredModules = "nodejs require()"
+      ..requiredNamespace = ".NET Namespace"
   ];
 
   late EpubManifest testManifest;
   setUp(() async {
-    testManifest = new EpubManifest()..Items = List.from(reference.Items!);
+    testManifest = EpubManifest()..items = List.from(reference.items!);
   });
 
   group("EpubManifest", () {
@@ -29,14 +29,14 @@ main() async {
       });
 
       test("is false when Items changes", () async {
-        testManifest.Items!.add(new EpubManifestItem()
-          ..Fallback = "Some Different Fallback"
-          ..FallbackStyle = "A less than Stylish Fallback"
-          ..Href = "Some Different HREF"
-          ..Id = "Some Different ID"
-          ..MediaType = "RealPlayer"
-          ..RequiredModules = "require()"
-          ..RequiredNamespace = "Namespace");
+        testManifest.items!.add(EpubManifestItem()
+          ..fallback = "Some Different Fallback"
+          ..fallbackStyle = "A less than Stylish Fallback"
+          ..href = "Some Different HREF"
+          ..id = "Some Different ID"
+          ..mediaType = "RealPlayer"
+          ..requiredModules = "require()"
+          ..requiredNamespace = "Namespace");
 
         expect(testManifest, isNot(reference));
       });
@@ -48,14 +48,14 @@ main() async {
       });
 
       test("is false when Items changes", () async {
-        testManifest.Items!.add(new EpubManifestItem()
-          ..Fallback = "Some Different Fallback"
-          ..FallbackStyle = "A less than Stylish Fallback"
-          ..Href = "Some Different HREF"
-          ..Id = "Some Different ID"
-          ..MediaType = "RealPlayer"
-          ..RequiredModules = "require()"
-          ..RequiredNamespace = "Namespace");
+        testManifest.items!.add(EpubManifestItem()
+          ..fallback = "Some Different Fallback"
+          ..fallbackStyle = "A less than Stylish Fallback"
+          ..href = "Some Different HREF"
+          ..id = "Some Different ID"
+          ..mediaType = "RealPlayer"
+          ..requiredModules = "require()"
+          ..requiredNamespace = "Namespace");
         expect(testManifest.hashCode, isNot(reference.hashCode));
       });
     });

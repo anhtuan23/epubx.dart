@@ -8,26 +8,26 @@ import 'package:epubx/src/ref_entities/epub_text_content_file_ref.dart';
 import 'package:test/test.dart';
 
 main() async {
-  var reference = new EpubContentRef();
+  var reference = EpubContentRef();
 
   late EpubContentRef testContent;
   late EpubTextContentFileRef textContentFile;
   late EpubByteContentFileRef byteContentFile;
   setUp(() async {
-    var arch = new Archive();
-    var refBook = new EpubBookRef(arch);
+    var arch = Archive();
+    var refBook = EpubBookRef(arch);
 
-    testContent = new EpubContentRef();
+    testContent = EpubContentRef();
 
-    textContentFile = new EpubTextContentFileRef(refBook)
-      ..ContentMimeType = "application/text"
-      ..ContentType = EpubContentType.OTHER
-      ..FileName = "orthros.txt";
+    textContentFile = EpubTextContentFileRef(refBook)
+      ..contentMimeType = "application/text"
+      ..contentType = EpubContentType.OTHER
+      ..fileName = "orthros.txt";
 
-    byteContentFile = new EpubByteContentFileRef(refBook)
-      ..ContentMimeType = "application/orthros"
-      ..ContentType = EpubContentType.OTHER
-      ..FileName = "orthros.bin";
+    byteContentFile = EpubByteContentFileRef(refBook)
+      ..contentMimeType = "application/orthros"
+      ..contentType = EpubContentType.OTHER
+      ..fileName = "orthros.bin";
   });
 
   group("EpubContentRef", () {
@@ -37,27 +37,27 @@ main() async {
       });
 
       test("is false when Html changes", () async {
-        testContent.Html["someKey"] = textContentFile;
+        testContent.html["someKey"] = textContentFile;
         expect(testContent, isNot(reference));
       });
 
       test("is false when Css changes", () async {
-        testContent.Css["someKey"] = textContentFile;
+        testContent.css["someKey"] = textContentFile;
         expect(testContent, isNot(reference));
       });
 
       test("is false when Images changes", () async {
-        testContent.Images["someKey"] = byteContentFile;
+        testContent.images["someKey"] = byteContentFile;
         expect(testContent, isNot(reference));
       });
 
       test("is false when Fonts changes", () async {
-        testContent.Fonts["someKey"] = byteContentFile;
+        testContent.fonts["someKey"] = byteContentFile;
         expect(testContent, isNot(reference));
       });
 
       test("is false when AllFiles changes", () async {
-        testContent.AllFiles["someKey"] = byteContentFile;
+        testContent.allFiles["someKey"] = byteContentFile;
         expect(testContent, isNot(reference));
       });
     });
@@ -68,27 +68,27 @@ main() async {
       });
 
       test("is false when Html changes", () async {
-        testContent.Html["someKey"] = textContentFile;
+        testContent.html["someKey"] = textContentFile;
         expect(testContent.hashCode, isNot(reference.hashCode));
       });
 
       test("is false when Css changes", () async {
-        testContent.Css["someKey"] = textContentFile;
+        testContent.css["someKey"] = textContentFile;
         expect(testContent.hashCode, isNot(reference.hashCode));
       });
 
       test("is false when Images changes", () async {
-        testContent.Images["someKey"] = byteContentFile;
+        testContent.images["someKey"] = byteContentFile;
         expect(testContent.hashCode, isNot(reference.hashCode));
       });
 
       test("is false when Fonts changes", () async {
-        testContent.Fonts["someKey"] = byteContentFile;
+        testContent.fonts["someKey"] = byteContentFile;
         expect(testContent.hashCode, isNot(reference.hashCode));
       });
 
       test("is false when AllFiles changes", () async {
-        testContent.AllFiles["someKey"] = byteContentFile;
+        testContent.allFiles["someKey"] = byteContentFile;
         expect(testContent.hashCode, isNot(reference.hashCode));
       });
     });

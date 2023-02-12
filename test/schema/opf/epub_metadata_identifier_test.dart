@@ -4,17 +4,17 @@ import 'package:epubx/src/schema/opf/epub_metadata_identifier.dart';
 import 'package:test/test.dart';
 
 main() async {
-  var reference = new EpubMetadataIdentifier()
-    ..Id = "Unique"
-    ..Identifier = "Identifier"
-    ..Scheme = "A plot";
+  var reference = EpubMetadataIdentifier()
+    ..id = "Unique"
+    ..identifier = "Identifier"
+    ..scheme = "A plot";
 
   late EpubMetadataIdentifier testMetadataIdentifier;
   setUp(() async {
-    testMetadataIdentifier = new EpubMetadataIdentifier()
-      ..Id = reference.Id
-      ..Identifier = reference.Identifier
-      ..Scheme = reference.Scheme;
+    testMetadataIdentifier = EpubMetadataIdentifier()
+      ..id = reference.id
+      ..identifier = reference.identifier
+      ..scheme = reference.scheme;
   });
 
   group("EpubMetadataIdentifier", () {
@@ -24,15 +24,15 @@ main() async {
       });
 
       test("is false when Id changes", () async {
-        testMetadataIdentifier.Id = "A different ID";
+        testMetadataIdentifier.id = "A different ID";
         expect(testMetadataIdentifier, isNot(reference));
       });
       test("is false when Identifier changes", () async {
-        testMetadataIdentifier.Identifier = "A different identifier";
+        testMetadataIdentifier.identifier = "A different identifier";
         expect(testMetadataIdentifier, isNot(reference));
       });
       test("is false when Scheme changes", () async {
-        testMetadataIdentifier.Scheme = "A strange scheme";
+        testMetadataIdentifier.scheme = "A strange scheme";
         expect(testMetadataIdentifier, isNot(reference));
       });
     });
@@ -43,15 +43,15 @@ main() async {
       });
 
       test("is false when Id changes", () async {
-        testMetadataIdentifier.Id = "A different Id";
+        testMetadataIdentifier.id = "A different Id";
         expect(testMetadataIdentifier.hashCode, isNot(reference.hashCode));
       });
       test("is false when Identifier changes", () async {
-        testMetadataIdentifier.Identifier = "A different identifier";
+        testMetadataIdentifier.identifier = "A different identifier";
         expect(testMetadataIdentifier.hashCode, isNot(reference.hashCode));
       });
       test("is false when Scheme changes", () async {
-        testMetadataIdentifier.Scheme = "A strange scheme";
+        testMetadataIdentifier.scheme = "A strange scheme";
         expect(testMetadataIdentifier.hashCode, isNot(reference.hashCode));
       });
     });

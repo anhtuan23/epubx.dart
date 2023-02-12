@@ -9,14 +9,14 @@ import '../../random_data_generator.dart';
 
 main() async {
   final RandomDataGenerator generator =
-      new RandomDataGenerator(new Random(123778), 10);
+      RandomDataGenerator(Random(123778), 10);
 
   final EpubNavigationHead reference = generator.randomEpubNavigationHead();
 
   late EpubNavigationHead testGuideReference;
   setUp(() async {
-    testGuideReference = new EpubNavigationHead()
-      ..Metadata = List.from(reference.Metadata!);
+    testGuideReference = EpubNavigationHead()
+      ..metadata = List.from(reference.metadata!);
   });
 
   group("EpubNavigationHead", () {
@@ -26,7 +26,7 @@ main() async {
       });
 
       test("is false when Metadata changes", () async {
-        testGuideReference.Metadata!.add(generator.randomNavigationHeadMeta());
+        testGuideReference.metadata!.add(generator.randomNavigationHeadMeta());
         expect(testGuideReference, isNot(reference));
       });
     });
@@ -37,7 +37,7 @@ main() async {
       });
 
       test("is false when Metadata changes", () async {
-        testGuideReference.Metadata!.add(generator.randomNavigationHeadMeta());
+        testGuideReference.metadata!.add(generator.randomNavigationHeadMeta());
         expect(testGuideReference.hashCode, isNot(reference.hashCode));
       });
     });

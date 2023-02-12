@@ -6,11 +6,11 @@ import 'epub_content_file.dart';
 import 'epub_text_content_file.dart';
 
 class EpubContent {
-  final Map<String, EpubTextContentFile> Html;
-  final Map<String, EpubTextContentFile> Css;
-  final Map<String, EpubByteContentFile> Images;
-  final Map<String, EpubByteContentFile> Fonts;
-  final Map<String, EpubContentFile> AllFiles;
+  final Map<String, EpubTextContentFile> html;
+  final Map<String, EpubTextContentFile> css;
+  final Map<String, EpubByteContentFile> images;
+  final Map<String, EpubByteContentFile> fonts;
+  final Map<String, EpubContentFile> allFiles;
 
   EpubContent({
     Map<String, EpubTextContentFile>? html,
@@ -18,25 +18,25 @@ class EpubContent {
     Map<String, EpubByteContentFile>? images,
     Map<String, EpubByteContentFile>? fonts,
     Map<String, EpubContentFile>? allFiles,
-  })  : Html = html ?? <String, EpubTextContentFile>{},
-        Css = css ?? <String, EpubTextContentFile>{},
-        Images = images ?? <String, EpubByteContentFile>{},
-        Fonts = fonts ?? <String, EpubByteContentFile>{},
-        AllFiles = allFiles ?? <String, EpubContentFile>{};
+  })  : html = html ?? <String, EpubTextContentFile>{},
+        css = css ?? <String, EpubTextContentFile>{},
+        images = images ?? <String, EpubByteContentFile>{},
+        fonts = fonts ?? <String, EpubByteContentFile>{},
+        allFiles = allFiles ?? <String, EpubContentFile>{};
 
   @override
   int get hashCode {
     var objects = [
-      ...Html.keys.map((key) => key.hashCode),
-      ...Html.values.map((value) => value.hashCode),
-      ...Css.keys.map((key) => key.hashCode),
-      ...Css.values.map((value) => value.hashCode),
-      ...Images.keys.map((key) => key.hashCode),
-      ...Images.values.map((value) => value.hashCode),
-      ...Fonts.keys.map((key) => key.hashCode),
-      ...Fonts.values.map((value) => value.hashCode),
-      ...AllFiles.keys.map((key) => key.hashCode),
-      ...AllFiles.values.map((value) => value.hashCode),
+      ...html.keys.map((key) => key.hashCode),
+      ...html.values.map((value) => value.hashCode),
+      ...css.keys.map((key) => key.hashCode),
+      ...css.values.map((value) => value.hashCode),
+      ...images.keys.map((key) => key.hashCode),
+      ...images.values.map((value) => value.hashCode),
+      ...fonts.keys.map((key) => key.hashCode),
+      ...fonts.values.map((value) => value.hashCode),
+      ...allFiles.keys.map((key) => key.hashCode),
+      ...allFiles.values.map((value) => value.hashCode),
     ];
 
     return hashObjects(objects);
@@ -44,13 +44,13 @@ class EpubContent {
 
   @override
   bool operator ==(other) {
-    if (!(other is EpubContent)) {
+    if (other is! EpubContent) {
       return false;
     }
-    return collections.mapsEqual(Html, other.Html) &&
-        collections.mapsEqual(Css, other.Css) &&
-        collections.mapsEqual(Images, other.Images) &&
-        collections.mapsEqual(Fonts, other.Fonts) &&
-        collections.mapsEqual(AllFiles, other.AllFiles);
+    return collections.mapsEqual(html, other.html) &&
+        collections.mapsEqual(css, other.css) &&
+        collections.mapsEqual(images, other.images) &&
+        collections.mapsEqual(fonts, other.fonts) &&
+        collections.mapsEqual(allFiles, other.allFiles);
   }
 }

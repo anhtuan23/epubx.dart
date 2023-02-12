@@ -8,16 +8,15 @@ import 'package:test/test.dart';
 import '../../random_data_generator.dart';
 
 main() async {
-  final generator = new RandomDataGenerator(new Random(7898), 10);
+  final generator = RandomDataGenerator(Random(7898), 10);
   final EpubNavigationDocAuthor reference =
       generator.randomNavigationDocAuthor();
 
   late EpubNavigationDocAuthor testNavigationDocAuthor;
   setUp(() async {
-    testNavigationDocAuthor = new EpubNavigationDocAuthor()
-      ..Authors = List.from(reference.Authors!);
+    testNavigationDocAuthor = EpubNavigationDocAuthor()
+      ..authors = List.from(reference.authors!);
   });
-
 
   group("EpubNavigationDocAuthor", () {
     group(".equals", () {
@@ -26,7 +25,7 @@ main() async {
       });
 
       test("is false when Authors changes", () async {
-        testNavigationDocAuthor.Authors!.add(generator.randomString());
+        testNavigationDocAuthor.authors!.add(generator.randomString());
         expect(testNavigationDocAuthor, isNot(reference));
       });
     });
@@ -37,7 +36,7 @@ main() async {
       });
 
       test("is false when Authors changes", () async {
-        testNavigationDocAuthor.Authors!.add(generator.randomString());
+        testNavigationDocAuthor.authors!.add(generator.randomString());
         expect(testNavigationDocAuthor.hashCode, isNot(reference.hashCode));
       });
     });
