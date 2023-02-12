@@ -9,15 +9,12 @@ main() async {
     ..Identifier = "Identifier"
     ..Scheme = "A plot";
 
-  EpubMetadataIdentifier testMetadataIdentifier;
+  late EpubMetadataIdentifier testMetadataIdentifier;
   setUp(() async {
     testMetadataIdentifier = new EpubMetadataIdentifier()
       ..Id = reference.Id
       ..Identifier = reference.Identifier
       ..Scheme = reference.Scheme;
-  });
-  tearDown(() async {
-    testMetadataIdentifier = null;
   });
 
   group("EpubMetadataIdentifier", () {

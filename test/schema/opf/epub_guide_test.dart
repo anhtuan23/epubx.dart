@@ -13,20 +13,18 @@ main() async {
 
   var reference = generator.randomEpubGuide();
 
-  EpubGuide testGuide;
+  late EpubGuide testGuide;
   setUp(() async {
-    testGuide = new EpubGuide()..Items = List.from(reference.Items);
+    testGuide = new EpubGuide()..Items = List.from(reference.Items!);
   });
-  tearDown(() async {
-    testGuide = null;
-  });
+
   group("EpubGuide", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {
         expect(testGuide, equals(reference));
       });
       test("is false when Items changes", () async {
-        testGuide.Items.add(generator.randomEpubGuideReference());
+        testGuide.Items!.add(generator.randomEpubGuideReference());
         expect(testGuide, isNot(reference));
       });
     });
@@ -36,7 +34,7 @@ main() async {
         expect(testGuide.hashCode, equals(reference.hashCode));
       });
       test("is false when Items changes", () async {
-        testGuide.Items.add(generator.randomEpubGuideReference());
+        testGuide.Items!.add(generator.randomEpubGuideReference());
         expect(testGuide.hashCode, isNot(reference.hashCode));
       });
     });

@@ -13,13 +13,11 @@ main() async {
 
   final EpubNavigationLabel reference = generator.randomEpubNavigationLabel();
 
-  EpubNavigationLabel testNavigationLabel;
+  late EpubNavigationLabel testNavigationLabel;
   setUp(() async {
     testNavigationLabel = new EpubNavigationLabel()..Text = reference.Text;
   });
-  tearDown(() async {
-    testNavigationLabel = null;
-  });
+
   group("EpubNavigationLabel", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

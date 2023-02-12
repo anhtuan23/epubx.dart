@@ -1,7 +1,7 @@
 library epubreadertest;
 
 import 'package:archive/archive.dart';
-import 'package:epubx/epub.dart';
+import 'package:epubx/epubx.dart';
 import 'package:epubx/src/entities/epub_schema.dart';
 import 'package:epubx/src/ref_entities/epub_content_ref.dart';
 import 'package:epubx/src/ref_entities/epub_text_content_file_ref.dart';
@@ -16,7 +16,7 @@ main() async {
     ..Schema = new EpubSchema()
     ..Title = "A Dissertation on Epubs";
 
-  EpubBookRef testBookRef;
+  late EpubBookRef testBookRef;
   setUp(() async {
     testBookRef = new EpubBookRef(arch);
     testBookRef
@@ -25,9 +25,7 @@ main() async {
       ..Schema = new EpubSchema()
       ..Title = "A Dissertation on Epubs";
   });
-  tearDown(() async {
-    testBookRef = null;
-  });
+
   group("EpubBookRef", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

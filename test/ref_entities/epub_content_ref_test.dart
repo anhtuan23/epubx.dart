@@ -1,7 +1,7 @@
 library epubreadertest;
 
 import 'package:archive/archive.dart';
-import 'package:epubx/epub.dart';
+import 'package:epubx/epubx.dart';
 import 'package:epubx/src/ref_entities/epub_byte_content_file_ref.dart';
 import 'package:epubx/src/ref_entities/epub_content_ref.dart';
 import 'package:epubx/src/ref_entities/epub_text_content_file_ref.dart';
@@ -10,10 +10,9 @@ import 'package:test/test.dart';
 main() async {
   var reference = new EpubContentRef();
 
-  EpubContentRef testContent;
-  EpubTextContentFileRef textContentFile;
-  EpubByteContentFileRef byteContentFile;
-
+  late EpubContentRef testContent;
+  late EpubTextContentFileRef textContentFile;
+  late EpubByteContentFileRef byteContentFile;
   setUp(() async {
     var arch = new Archive();
     var refBook = new EpubBookRef(arch);
@@ -31,11 +30,6 @@ main() async {
       ..FileName = "orthros.bin";
   });
 
-  tearDown(() async {
-    testContent = null;
-    textContentFile = null;
-    byteContentFile = null;
-  });
   group("EpubContentRef", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

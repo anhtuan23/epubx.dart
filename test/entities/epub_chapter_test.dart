@@ -1,6 +1,6 @@
 library epubreadertest;
 
-import 'package:epubx/epub.dart';
+import 'package:epubx/epubx.dart';
 import 'package:test/test.dart';
 
 main() async {
@@ -12,7 +12,7 @@ main() async {
     ..SubChapters = []
     ..Title = "A New Look at Chapters";
 
-  EpubChapter testChapter;
+  late EpubChapter testChapter;
   setUp(() async {
     testChapter = new EpubChapter();
     testChapter
@@ -22,9 +22,8 @@ main() async {
       ..SubChapters = []
       ..Title = "A New Look at Chapters";
   });
-  tearDown(() async {
-    testChapter = null;
-  });
+
+
   group("EpubChapter", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

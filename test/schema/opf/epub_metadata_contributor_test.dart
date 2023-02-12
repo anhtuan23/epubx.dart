@@ -9,16 +9,14 @@ main() async {
     ..FileAs = "Large"
     ..Role = "Creator";
 
-  EpubMetadataContributor testMetadataContributor;
+  late EpubMetadataContributor testMetadataContributor;
   setUp(() async {
     testMetadataContributor = new EpubMetadataContributor()
       ..Contributor = reference.Contributor
       ..FileAs = reference.FileAs
       ..Role = reference.Role;
   });
-  tearDown(() async {
-    testMetadataContributor = null;
-  });
+
 
   group("EpubMetadataContributor", () {
     group(".equals", () {

@@ -1,6 +1,6 @@
 library epubreadertest;
 
-import 'package:epubx/epub.dart';
+import 'package:epubx/epubx.dart';
 import 'package:epubx/src/entities/epub_schema.dart';
 import 'package:epubx/src/schema/navigation/epub_navigation_doc_author.dart';
 import 'package:epubx/src/schema/navigation/epub_navigation_doc_title.dart';
@@ -14,20 +14,18 @@ main() async {
     ..Package = new EpubPackage()
     ..Navigation = new EpubNavigation()
     ..ContentDirectoryPath = "some/random/path";
-  reference.Package.Version = EpubVersion.Epub2;
+  reference.Package!.Version = EpubVersion.Epub2;
 
-  EpubSchema testSchema;
+  late EpubSchema testSchema;
   setUp(() async {
     testSchema = new EpubSchema();
     testSchema
       ..Package = new EpubPackage()
       ..Navigation = new EpubNavigation()
       ..ContentDirectoryPath = "some/random/path";
-    testSchema.Package.Version = EpubVersion.Epub2;
+    testSchema.Package!.Version = EpubVersion.Epub2;
   });
-  tearDown(() async {
-    testSchema = null;
-  });
+
   group("EpubSchema", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

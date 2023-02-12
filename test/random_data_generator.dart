@@ -1,6 +1,6 @@
 import 'dart:math' show Random;
 
-import 'package:epubx/epub.dart';
+import 'package:epubx/epubx.dart';
 import 'package:epubx/src/schema/navigation/epub_metadata.dart';
 import 'package:epubx/src/schema/navigation/epub_navigation_doc_author.dart';
 import 'package:epubx/src/schema/navigation/epub_navigation_doc_title.dart';
@@ -88,9 +88,8 @@ class RandomDataGenerator {
   RandomString _randomString;
   final int _length;
 
-  RandomDataGenerator(this.rng, this._length) {
-    _randomString = new RandomString(rng);
-  }
+  RandomDataGenerator(this.rng, this._length)
+      : _randomString = new RandomString(rng);
 
   String randomString() {
     return _randomString.randomAlphaNumeric(_length);
@@ -105,7 +104,7 @@ class RandomDataGenerator {
       ..Class = randomString()
       ..ChildNavigationPoints = depth > 0
           ? [randomEpubNavigationPoint(depth - 1)]
-          : new List<EpubNavigationPoint>();
+          : <EpubNavigationPoint>[];
   }
 
   EpubNavigationContent randomEpubNavigationContent() {

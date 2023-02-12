@@ -2,7 +2,7 @@ library epubreadertest;
 
 import 'dart:math';
 
-import 'package:epubx/epub.dart';
+import 'package:epubx/epubx.dart';
 import 'package:epubx/src/schema/opf/epub_version.dart';
 import 'package:test/test.dart';
 
@@ -16,7 +16,7 @@ main() async {
 
   var reference = generator.randomEpubPackage()..Version = EpubVersion.Epub3;
 
-  EpubPackage testPackage;
+  late EpubPackage testPackage;
   setUp(() async {
     testPackage = new EpubPackage()
       ..Guide = reference.Guide
@@ -24,9 +24,6 @@ main() async {
       ..Metadata = reference.Metadata
       ..Spine = reference.Spine
       ..Version = reference.Version;
-  });
-  tearDown(() async {
-    testPackage = null;
   });
 
   group("EpubSpine", () {

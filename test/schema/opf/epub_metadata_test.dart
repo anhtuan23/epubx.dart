@@ -19,29 +19,28 @@ main() async {
       new RandomDataGenerator(new Random(123778), length);
 
   var reference = generator.randomEpubMetadata();
-  EpubMetadata testMetadata;
+
+  late EpubMetadata testMetadata;
   setUp(() async {
     testMetadata = new EpubMetadata()
-      ..Contributors = List.from(reference.Contributors)
-      ..Coverages = List.from(reference.Coverages)
-      ..Creators = List.from(reference.Creators)
-      ..Dates = List.from(reference.Dates)
+      ..Contributors = List.from(reference.Contributors!)
+      ..Coverages = List.from(reference.Coverages!)
+      ..Creators = List.from(reference.Creators!)
+      ..Dates = List.from(reference.Dates!)
       ..Description = reference.Description
-      ..Formats = List.from(reference.Formats)
-      ..Identifiers = List.from(reference.Identifiers)
-      ..Languages = List.from(reference.Languages)
-      ..MetaItems = List.from(reference.MetaItems)
-      ..Publishers = List.from(reference.Publishers)
-      ..Relations = List.from(reference.Relations)
-      ..Rights = List.from(reference.Rights)
-      ..Sources = List.from(reference.Sources)
-      ..Subjects = List.from(reference.Subjects)
-      ..Titles = List.from(reference.Titles)
-      ..Types = List.from(reference.Types);
+      ..Formats = List.from(reference.Formats!)
+      ..Identifiers = List.from(reference.Identifiers!)
+      ..Languages = List.from(reference.Languages!)
+      ..MetaItems = List.from(reference.MetaItems!)
+      ..Publishers = List.from(reference.Publishers!)
+      ..Relations = List.from(reference.Relations!)
+      ..Rights = List.from(reference.Rights!)
+      ..Sources = List.from(reference.Sources!)
+      ..Subjects = List.from(reference.Subjects!)
+      ..Titles = List.from(reference.Titles!)
+      ..Types = List.from(reference.Types!);
   });
-  tearDown(() async {
-    testMetadata = null;
-  });
+
 
   group("EpubMetadata", () {
     group(".equals", () {

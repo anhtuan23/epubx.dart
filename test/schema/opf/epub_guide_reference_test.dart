@@ -13,7 +13,7 @@ main() async {
 
   var reference = generator.randomEpubGuideReference();
 
-  EpubGuideReference testGuideReference;
+  late EpubGuideReference testGuideReference;
   setUp(() async {
     testGuideReference = new EpubGuideReference();
     testGuideReference
@@ -21,9 +21,7 @@ main() async {
       ..Title = reference.Title
       ..Type = reference.Type;
   });
-  tearDown(() async {
-    testGuideReference = null;
-  });
+
   group("EpubGuideReference", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

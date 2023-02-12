@@ -1,7 +1,7 @@
 library epubreadertest;
 
 import 'package:archive/archive.dart';
-import 'package:epubx/epub.dart';
+import 'package:epubx/epubx.dart';
 import 'package:epubx/src/ref_entities/epub_chapter_ref.dart';
 import 'package:epubx/src/ref_entities/epub_text_content_file_ref.dart';
 import 'package:test/test.dart';
@@ -18,8 +18,8 @@ main() async {
     ..SubChapters = []
     ..Title = "A New Look at Chapters";
 
-  EpubBookRef bookRef2;
-  EpubChapterRef testChapterRef;
+  late EpubBookRef bookRef2;
+  late EpubChapterRef testChapterRef;
   setUp(() async {
     var arch2 = new Archive();
     bookRef2 = new EpubBookRef(arch2);
@@ -33,10 +33,6 @@ main() async {
       ..Title = "A New Look at Chapters";
   });
 
-  tearDown(() async {
-    testChapterRef = null;
-    bookRef2 = null;
-  });
   group("EpubChapterRef", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {
