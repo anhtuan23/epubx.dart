@@ -17,4 +17,4 @@ dependencies:
 dev_dependencies:
   test: ^1.23.1 
   path: ^1.8.3
-  pedantic: ^1.11.0
+  lints: ^2.0.1
