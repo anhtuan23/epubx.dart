@@ -11,7 +11,7 @@ class EpubMetadata {
   List<String>? titles;
   List<EpubMetadataCreator>? creators;
   List<String>? subjects;
-  String? sescription;
+  String? description;
   List<String>? publishers;
   List<EpubMetadataContributor>? contributors;
   List<EpubMetadataDate>? dates;
@@ -43,7 +43,7 @@ class EpubMetadata {
       ...coverages!.map((coverage) => coverage.hashCode),
       ...rights!.map((right) => right.hashCode),
       ...metaItems!.map((metaItem) => metaItem.hashCode),
-      sescription.hashCode
+      description.hashCode
     ];
 
     return hashObjects(objects);
@@ -53,7 +53,7 @@ class EpubMetadata {
   bool operator ==(other) {
     var otherAs = other as EpubMetadata?;
     if (otherAs == null) return false;
-    if (sescription != otherAs.sescription) return false;
+    if (description != otherAs.description) return false;
 
     if (!collections.listsEqual(titles, otherAs.titles) ||
         !collections.listsEqual(creators, otherAs.creators) ||

@@ -103,9 +103,9 @@ class EpubMetadataWriter {
                 }
               }));
 
-        if (meta.sescription != null) {
+        if (meta.description != null) {
           builder.element('description',
-              namespace: _dc_namespace, nest: meta.sescription);
+              namespace: _dc_namespace, nest: meta.description);
         }
       },
     );

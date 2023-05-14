@@ -27,7 +27,7 @@ main() async {
       ..coverages = List.from(reference.coverages!)
       ..creators = List.from(reference.creators!)
       ..dates = List.from(reference.dates!)
-      ..sescription = reference.sescription
+      ..description = reference.description
       ..formats = List.from(reference.formats!)
       ..identifiers = List.from(reference.identifiers!)
       ..languages = List.from(reference.languages!)
@@ -63,7 +63,7 @@ main() async {
         expect(testMetadata, isNot(reference));
       });
       test("is false when Description changes", () async {
-        testMetadata.sescription = randomString.randomAlpha(length);
+        testMetadata.description = randomString.randomAlpha(length);
         expect(testMetadata, isNot(reference));
       });
       test("is false when Formats changes", () async {
@@ -133,7 +133,7 @@ main() async {
         expect(testMetadata.hashCode, isNot(reference.hashCode));
       });
       test("is false when Description changes", () async {
-        testMetadata.sescription = randomString.randomAlpha(length);
+        testMetadata.description = randomString.randomAlpha(length);
         expect(testMetadata.hashCode, isNot(reference.hashCode));
       });
       test("is false when Formats changes", () async {

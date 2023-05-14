@@ -46,7 +46,8 @@ class RandomString {
   /// Generates a random string of [length] with characters
   /// between ascii [from] to [to].
   /// Defaults to characters of ascii '!' to '~'.
-  String randomString(int length, {int from = ASCII_START, int to = ASCII_END}) {
+  String randomString(int length,
+      {int from = ASCII_START, int to = ASCII_END}) {
     return String.fromCharCodes(
         List.generate(length, (index) => randomBetween(from, to)));
   }
@@ -204,7 +205,7 @@ class RandomDataGenerator {
       ..coverages = [_randomString.randomAlpha(_length)]
       ..creators = [randomEpubMetadataCreator()]
       ..dates = [randomEpubMetadataDate()]
-      ..sescription = _randomString.randomAlpha(_length)
+      ..description = _randomString.randomAlpha(_length)
       ..formats = [_randomString.randomAlpha(_length)]
       ..identifiers = [randomEpubMetadataIdentifier()]
       ..languages = [_randomString.randomAlpha(_length)]
