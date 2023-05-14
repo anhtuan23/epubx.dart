@@ -133,7 +133,7 @@ class PackageReader {
     metadataNode.children
         .whereType<XmlElement>()
         .forEach((XmlElement metadataItemNode) {
-      var innerText = metadataItemNode.text;
+      var innerText = metadataItemNode.innerText;
       switch (metadataItemNode.name.local.toLowerCase()) {
         case 'title':
           result.titles!.add(innerText);
@@ -146,7 +146,7 @@ class PackageReader {
           result.subjects!.add(innerText);
           break;
         case 'description':
-          result.sescription = innerText;
+          result.description = innerText;
           break;
         case 'publisher':
           result.publishers!.add(innerText);
@@ -213,7 +213,7 @@ class PackageReader {
           break;
       }
     }
-    result.contributor = metadataContributorNode.text;
+    result.contributor = metadataContributorNode.innerText;
     return result;
   }
 
@@ -231,7 +231,7 @@ class PackageReader {
           break;
       }
     }
-    result.creator = metadataCreatorNode.text;
+    result.creator = metadataCreatorNode.innerText;
     return result;
   }
 
@@ -242,7 +242,7 @@ class PackageReader {
     if (eventAttribute != null && eventAttribute.isNotEmpty) {
       result.event = eventAttribute;
     }
-    result.date = metadataDateNode.text;
+    result.date = metadataDateNode.innerText;
     return result;
   }
 
@@ -261,7 +261,7 @@ class PackageReader {
           break;
       }
     }
-    result.identifier = metadataIdentifierNode.text;
+    result.identifier = metadataIdentifierNode.innerText;
     return result;
   }
 
@@ -305,7 +305,7 @@ class PackageReader {
           break;
       }
     }
-    result.content = metadataMetaNode.text;
+    result.content = metadataMetaNode.innerText;
     return result;
   }
 
